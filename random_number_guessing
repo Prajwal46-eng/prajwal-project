@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h> // for rand() and srand()
+#include <time.h>   // for time()
+
+int main() {
+    srand(time(0)); // Seed for random generator
+    int randomNumber = (rand() % 100) + 1; // Random number 1–100
+    int no_of_guesses = 0;
+    int guessed;
+
+    // Uncomment to see the random number for testing:
+    // printf("Random number : %d\n", randomNumber);
+
+    do {
+        printf("Guess the number: ");
+        scanf("%d", &guessed);
+        no_of_guesses++;
+
+        if (guessed > randomNumber) {
+            printf("Lower number please!\n");
+        } 
+        else if (guessed < randomNumber) {
+            printf("Higher number please!\n");
+        }
+        else {
+            printf("🎉 You guessed the number in %d guesses!\n", no_of_guesses);
+        }
+
+    } while (guessed != randomNumber);
+
+    return 0;
+}
