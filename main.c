@@ -1,32 +1,47 @@
 #include <stdio.h>
-#include <stdlib.h> // for rand() and srand()
-#include <time.h>   // for time()
+#include <stdlib.h>
+#include <time.h>
 
-int main() {
-    srand(time(0)); // Seed for random generator
-    int randomNumber = (rand() % 100) + 1; // Random number 1–100
-    int no_of_guesses = 0;
-    int guessed;
+int main(){
+    srand(time(0));
+    int player, computer = (rand() % 3);
+    /*
+    0 -->snake
+    1 -->water
+    2 -->gun
+    */
+   printf("choose 0 for snake, 1 for water and 2 for gun\n");
+   scanf("%d", &player);
+   printf("computer choose %d\n" , computer);
+   if(player == 0 && computer == 0){
+    printf("It's a Draw! \n");
+    
+   }
+   else if (player == 0 && computer == 1){
+    printf("you win! \n");
+   }
+   else if (player == 0 && computer == 2){
+    printf("you lose! \n");
+   }
+   else if (player == 1 && computer == 0){
+    printf("you lose! \n");
+   }
+   else if (player == 1 && computer == 1){
+    printf("It's a Draw! \n");
+   }
+   else if (player == 1 && computer == 2){
+    printf("you win! \n");
+   }
+   else if (player == 2 && computer == 0){
+    printf("you win! \n");
+   }
+   else if (player == 2 && computer == 1){
+    printf("you lose! \n");
+   }
+   else if (player == 2 && computer == 2){
+    printf("It's a Draw! \n");
+   }
 
-    // Uncomment to see the random number for testing:
-    // printf("Random number : %d\n", randomNumber);
-
-    do {
-        printf("Guess the number: ");
-        scanf("%d", &guessed);
-        no_of_guesses++;
-
-        if (guessed > randomNumber) {
-            printf("Lower number please!\n");
-        } 
-        else if (guessed < randomNumber) {
-            printf("Higher number please!\n");
-        }
-        else {
-            printf("🎉 You guessed the number in %d guesses!\n", no_of_guesses);
-        }
-
-    } while (guessed != randomNumber);
 
     return 0;
 }
